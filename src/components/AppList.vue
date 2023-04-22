@@ -9,7 +9,9 @@ export default {
 
     props : {
         // ricevo l'array dal genitore tramite una props 'projects'
-        projects : Array
+        projects: Array,
+        pages: Array
+
     },
 
         // lista dei componenti da utilizzare nell' app
@@ -34,6 +36,24 @@ export default {
         <div v-else>
             <h1>Non ci sono progetti da visualizzare</h1>
         </div>
+
+        <!-- PAGINAZIONE -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination my-4">
+                <!-- v-html="page.label" per stampare correttamente la label -->
+                <li class="page-item" v-for="page in pages">
+                    <button type="button" class="page-link" 
+                    :class="{
+                        disabled: !page.url, // stampaimo la classe disabled se non riceviamo un URL
+                        active: page.active  //stampiamo la classe active quando 'active' è true
+                    }"
+                     v-html="page.label"
+                     @click="$emit('changePage', page.url)">
+                    </button>
+                <!-- sul click del button viene lanciato un $emit 'changePage' al genitore passando l'URL  -->
+                </li>
+            </ul>
+        </nav>
     </div>
 </template>
 
