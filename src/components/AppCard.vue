@@ -19,7 +19,7 @@ export default {
             <h5 class="card-title">Nome progetto: {{ project.name }}</h5>
             <p>Data di inzio: {{ project.start_date }}</p>
             <p>Data fine: {{ project.end_date }}</p>
-            <!-- <p>Stack utilizzato: {{ project.type }}</p> -->
+            <p  v-if="project.type">Stack utilizzato: {{ project.type?.type_of_stack }}</p>
             <div v-if="project.technologies.length">
                 <p>Tecnologie utilizzate</p>
                 <ul> 
