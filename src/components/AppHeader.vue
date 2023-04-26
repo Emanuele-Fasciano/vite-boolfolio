@@ -21,8 +21,8 @@ export default {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-            <router-link :to="{ name:'Home'}" class="nav-link">
+            <li class="nav-item nav-link">
+            <router-link :to="{ name:'Home'}">
               Home
              </router-link>
            </li>

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import AppHome from './pages/AppHome.vue';
+import AppHomePage from './pages/AppHomePage.vue';
+import ProjectDetailPage from './pages/ProjectDetailPage.vue';
 
 const router = createRouter({
 history: createWebHistory(),
@@ -9,10 +10,18 @@ history: createWebHistory(),
 linkActiveClass: 'active',
 linkExactActiveClass: '',
 routes: [
+    // rotta per la Homepage
 {
 path: '/',
 name: 'Home',
-component: AppHome
+component: AppHomePage
+},
+
+// rotta per la pagina del dettaglio(i 2 punti indicano che l'id è un parametro)
+{
+path: '/project/:id',
+name: 'project-detail',
+component: ProjectDetailPage
 },
 
 ]

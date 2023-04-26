@@ -5,7 +5,9 @@ export default {
 
         // lista dei componenti da utilizzare nell' app
         props: {
-            project : Object
+            project : Object,
+            // ricevo true o false dal genitore per stampare o meno le informazioni del dettaglio
+            isDetail: Boolean
         }
 }
 </script>
@@ -26,10 +28,16 @@ export default {
                     <li v-for="tecnology in project.technologies">{{ tecnology.name }}</li>
                 </ul>
             </div>
-            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            <h4 v-if="isDetail">Descrizione:</h4>
+            <p  v-if="isDetail">{{ project.description }}</p>
+          </div>
+          <div class="card-footer d-flex justify-content-center" v-if="!isDetail">
+            <router-link :to="{ name: 'project-detail', params: { id:project.id} }" class="btn btn-primary">
+                  Vedi Dettagli
+            </router-link>
           </div>
         </div>
-    </div>
+      </div>
 </template>
 
 <style lang="scss" scoped></style>
